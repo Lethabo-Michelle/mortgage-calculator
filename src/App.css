@@ -1,0 +1,13 @@
+body {
+    height: 100svh;
+
+}
+
+@media (width >= 40rem) {
+
+    body {
+        background-color: red;
+        padding: 2rem;
+    }
+
+}
