@@ -10,7 +10,7 @@ function Calculator() {
     }
 
     return (
-        <div className="h-svh grid grid-rows-1-2">
+        <div className="calculator h-svh grid grid-rows-1-2 m-auto md:grid-cols-2 md:grid md:bg-white">
             {/*<h1>Mortgage Calculator</h1>*/}
             <Form submitValues={calculate}/>
             <Results value={isEmpty}/>

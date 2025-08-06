@@ -1,13 +1,30 @@
 body {
     height: 100svh;
+}
 
+div:has(>input:checked) {
+    background-color: #d9db3040;
 }
 
 @media (width >= 40rem) {
 
     body {
-        background-color: red;
+        background-color: #e3f4fc;
         padding: 2rem;
+    }
+
+    .calculator{
+        border-radius: 1rem 1rem;
+        width: 60%;
+        height: 30%;
+    }
+
+    .results{
+        border-radius: 0 1rem 1rem 5rem;
+    }
+
+    .form{
+        border-radius: 1rem 0 0 1rem;
     }
 
 }

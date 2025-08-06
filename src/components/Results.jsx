@@ -5,7 +5,7 @@ function Results(props) {
 
     if (props.value) {
         return (
-            <div className="p-6 bg-[#133040] w-full text-white flex flex-col items-center">
+            <div className="results p-6 bg-[#133040] w-full text-white flex flex-col items-center">
                 <img src={illustrationEmpty} alt=""/>
                 <h2 className="font-bold text-3xl mb-4">Results shown here</h2>
                 <p className="text-[1.2rem] mb-4 text-center">Complete the form and click "calculate repayments" to see what your monthly repayments would be.</p>
@@ -14,9 +14,9 @@ function Results(props) {
     }
 
     return (
-        <div className="p-6 bg-[#133040] w-full text-white">
-            <h2 className="font-bold text-3xl mb-4">Your results</h2>
-            <p className="text-[1.2rem] mb-4">
+        <div className="results p-6 bg-[#133040] w-full text-white">
+            <h2 className="font-bold text-3xl mb-4 px-2">Your results</h2>
+            <p className="text-[1.2rem] mb-12 px-2">
                 Your results are shown below based on the
                 information you provided. To adjust the results,
                 edit the form and click "Calculate Repayments" again.
