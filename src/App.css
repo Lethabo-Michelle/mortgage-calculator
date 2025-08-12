@@ -10,9 +10,18 @@ input:focus {
     outline: none;
 }
 
+.input-group {
+    transition: all 0.25s ease-in-out;
+}
+
 .input-group:focus-within {
     border-color: #d9db30;
     border-width: 0.1rem;
+}
+
+.input-group:hover{
+    border-color: #d9db30;
+    transform: scale(1.05);
 }
 
 @media (width >= 48rem) {
