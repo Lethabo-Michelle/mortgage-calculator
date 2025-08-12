@@ -13,6 +13,8 @@ function Form(props) {
         const amount = Number(formData.get("amount"));
         const term = Number(formData.get("term"));
         const interestRate = Number(formData.get("interestRate"));
+        const mortgageType = formData.get("mortgageType")
+        console.log(mortgageType)
 
         if(amount <= 0 || !amount) {
             setAmountError("must be a number greater than 0")
@@ -34,7 +36,7 @@ function Form(props) {
 
         if(interestRateError || amountError || termError) return;
 
-        props.submitValues(amount, term, interestRate)
+        props.submitValues(amount, term, interestRate, mortgageType)
     }
 
     return (
@@ -74,11 +76,11 @@ function Form(props) {
             <div>
                 <label htmlFor="mortgageType" className="text-lg text-gray-500">Mortgage Type</label>
                 <div className="input border-1 border-gray-400 h-12 md:h-10 rounded-lg my-2 flex gap-2 items-center px-4">
-                    <input type="radio" name="mortgageType" id="repayment" className="w-4 h-4 "/>
+                    <input type="radio" value="repayment" name="mortgageType" id="repayment" className="w-4 h-4 "/>
                     <label htmlFor="interestOnly" className="text-lg font-medium text-[#2c414c]">Repayment</label>
                 </div>
                 <div className="input border-1 border-gray-400 h-12 md:h-10  rounded-lg  mb-6 flex gap-2 items-center px-4">
-                    <input type="radio" name="interestOnly" id="interestOnly" className="w-4 h-5 "/>
+                    <input type="radio" value="interest" name="mortgageType" id="interestOnly" className="w-4 h-5 "/>
                     <label htmlFor="interestOnly" className="text-lg font-medium text-[#2c414c]">Interest Only</label>
                 </div>
             </div>

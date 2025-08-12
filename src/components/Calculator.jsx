@@ -6,15 +6,23 @@ function Calculator() {
     const [monthlyRepayment, setMonthlyRepayment] = useState(undefined);
     const [totalRepayment, setTotalRepayment] = useState(undefined)
 
-    function calculate(amount, term, interestRate) {
+    function calculate(amount, term, interestRate, type) {
         const months = term * 12;
         const rate = interestRate / 100;
+
+        if (type === 'interest') {
+            const interest = amount * rate;
+            setMonthlyRepayment(interest.toFixed(2));
+            const overallPayment = interest * months;
+            setTotalRepayment(overallPayment.toFixed(2));
+            return;
+        }
 
         const numerator = rate * (Math.pow((1 + rate), months));
         const denominator = Math.pow((1 + rate), months) - 1;
         const payment = amount * numerator / denominator;
-        const overallPayment = payment * months;
 
+        const overallPayment = payment * months;
         setMonthlyRepayment(payment.toFixed(2));
         setTotalRepayment(overallPayment.toFixed(2))
     }
