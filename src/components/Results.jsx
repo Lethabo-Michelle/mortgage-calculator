@@ -3,7 +3,7 @@ import illustrationEmpty from "../assets/illustration-empty.svg"
 
 function Results(props) {
 
-    if (props.value) {
+    if (!props.monthlyRepayment || !props.totalRepayment) {
         return (
             <div className="results p-6 bg-[#133040] w-full text-white flex flex-col items-center">
                 <img src={illustrationEmpty} alt=""/>
@@ -23,10 +23,10 @@ function Results(props) {
             </p>
             <div className="bg-[#0e2431] p-8 rounded-2xl shadow-[0px_-9px_0px_-1px_#d8e25a] mb-4">
                 <p className="text-[1.2rem] mb-4">Your monthly repayment</p>
-                <span className="text-[#d8e25a] text-5xl">R1000</span>
+                <span className="text-[#d8e25a] text-5xl">R {props.monthlyRepayment}</span>
                 <hr className="border-spacing-1 border-white my-4"/>
                 <p className="text-[1.2rem] mb-2">Total you'll repay over the term</p>
-                <span className="text-3xl">R10000</span>
+                <span className="text-3xl">R {props.totalRepayment}</span>
             </div>
         </div>
     );
