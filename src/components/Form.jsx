@@ -14,27 +14,27 @@ function Form(props) {
         const term = Number(formData.get("term"));
         const interestRate = Number(formData.get("interestRate"));
         const mortgageType = formData.get("mortgageType")
-        console.log(mortgageType)
 
         if(amount <= 0 || !amount) {
             setAmountError("must be a number greater than 0")
+            return;
         } else {
             setAmountError(undefined);
         }
 
         if(term <= 0 || !term){
             setTermError("must be a number greater than 0")
+            return;
         } else {
            setTermError(undefined)
         }
 
         if(interestRate <= 0 || !interestRate || interestRate > 100){
             setInterestRateError("must be a number between 0 and 100")
+            return;
         } else {
             setInterestRateError(undefined)
         }
-
-        if(interestRateError || amountError || termError) return;
 
         props.submitValues(amount, term, interestRate, mortgageType)
     }
@@ -47,7 +47,7 @@ function Form(props) {
             </div>
             <div className="flex flex-col py-4">
                 <label htmlFor="mortgageAmount" className="text-lg text-gray-500 mb-2">Mortgage Amount</label>
-                <div className="input-group input flex items-center border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
+                <div className="input-group flex items-center border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
                     <i className="bi bi-currency-pound text-2xl p-2 md:p-1 text-[#5c747e] bg-[#e3f4fe] w-12 h-full"></i>
                     <input type="text" id="mortgageAmount" name="amount" className="border-none px-4 text-[#2c414c] text-xl h-full w-full"/>
                 </div>
@@ -57,7 +57,7 @@ function Form(props) {
                 <div className="flex flex-col pb-4">
                     <label htmlFor="mortgageTerm" className="text-lg text-gray-500 mb-2">Mortgage Term</label>
                     <div
-                        className="input-group input flex justify-between border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
+                        className="input-group flex justify-between border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
                         <input type="text" id="mortgageTerm" name="term" className="border-none text-[#2c414c] text-xl px-4 h-full w-full"/>
                         <span className="bg-[#e3f4fe] p-2 md:p-1 text-xl text-[#5c747e] w-20 h-full">years</span>
                     </div>
@@ -75,11 +75,11 @@ function Form(props) {
             </div>
             <div>
                 <label htmlFor="mortgageType" className="text-lg text-gray-500">Mortgage Type</label>
-                <div className="input border-1 border-gray-400 h-12 md:h-10 rounded-lg my-2 flex gap-2 items-center px-4">
+                <div className="border-1 border-gray-400 h-12 md:h-10 rounded-lg my-2 flex gap-2 items-center px-4">
                     <input type="radio" value="repayment" name="mortgageType" id="repayment" className="w-4 h-4 "/>
                     <label htmlFor="interestOnly" className="text-lg font-medium text-[#2c414c]">Repayment</label>
                 </div>
-                <div className="input border-1 border-gray-400 h-12 md:h-10  rounded-lg  mb-6 flex gap-2 items-center px-4">
+                <div className="border-1 border-gray-400 h-12 md:h-10  rounded-lg  mb-6 flex gap-2 items-center px-4">
                     <input type="radio" value="interest" name="mortgageType" id="interestOnly" className="w-4 h-5 "/>
                     <label htmlFor="interestOnly" className="text-lg font-medium text-[#2c414c]">Interest Only</label>
                 </div>
