@@ -2,30 +2,39 @@ import React, {useState} from 'react';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Form(props) {
-    const [mortgageError, setMortgageError] = useState(undefined);
+    const [amountError, setAmountError] = useState(undefined);
+    const [termError, setTermError] = useState(undefined);
+    const [interestRateError, setInterestRateError] = useState(undefined);
 
     function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
 
-        const mortgageAmount = Number(formData.get("mortgageAmount"));
-        const mortgageType = formData.get("mortgageTerm");
-        const interestRate = formData.get("interestRate");
-        console.log(mortgageAmount)
-        console.log(mortgageType)
-        console.log(interestRate)
+        const amount = Number(formData.get("amount"));
+        const term = Number(formData.get("term"));
+        const interestRate = Number(formData.get("interestRate"));
 
-        if(mortgageAmount <= 0) {
-            setMortgageError("mortgage must be greater than 0")
-        } else if(!mortgageAmount) {
-            setMortgageError("mortgage must be a number")
+        if(amount <= 0 || !amount) {
+            setAmountError("must be a number greater than 0")
         } else {
-            setMortgageError(undefined);
+            setAmountError(undefined);
         }
 
-        if(mortgageError) return;
+        if(term <= 0 || !term){
+            setTermError("must be a number greater than 0")
+        } else {
+           setTermError(undefined)
+        }
 
-        // calculations
+        if(interestRate <= 0 || !interestRate || interestRate > 100){
+            setInterestRateError("must be a number between 0 and 100")
+        } else {
+            setInterestRateError(undefined)
+        }
+
+        if(interestRateError || amountError || termError) return;
+
+        props.submitValues(amount, term, interestRate)
     }
 
     return (
@@ -38,18 +47,19 @@ function Form(props) {
                 <label htmlFor="mortgageAmount" className="text-lg text-gray-500 mb-2">Mortgage Amount</label>
                 <div className="input-group input flex items-center border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
                     <i className="bi bi-currency-pound text-2xl p-2 md:p-1 text-[#5c747e] bg-[#e3f4fe] w-12 h-full"></i>
-                    <input type="text" id="mortgageAmount" name="mortgageAmount" className="border-none px-4 text-[#2c414c] text-xl h-full w-full"/>
+                    <input type="text" id="mortgageAmount" name="amount" className="border-none px-4 text-[#2c414c] text-xl h-full w-full"/>
                 </div>
-                {mortgageError && <small className="text-red-500">{mortgageError}</small>}
+                {amountError && <small className="text-red-500">{amountError}</small>}
             </div>
             <div className="inputs">
                 <div className="flex flex-col pb-4">
                     <label htmlFor="mortgageTerm" className="text-lg text-gray-500 mb-2">Mortgage Term</label>
                     <div
                         className="input-group input flex justify-between border-1 border-gray-400 h-12 md:h-10 overflow-hidden rounded-[0.5rem]">
-                        <input type="text" id="mortgageTerm" name="mortgageTerm" className="border-none text-[#2c414c] text-xl px-4 h-full w-full"/>
+                        <input type="text" id="mortgageTerm" name="term" className="border-none text-[#2c414c] text-xl px-4 h-full w-full"/>
                         <span className="bg-[#e3f4fe] p-2 md:p-1 text-xl text-[#5c747e] w-20 h-full">years</span>
                     </div>
+                    {termError && <small className="text-red-500">{termError}</small>}
                 </div>
                 <div className="input flex flex-col pb-4">
                     <label htmlFor="interestRate" className="text-lg text-gray-500 mb-2">Interest Rate</label>
@@ -58,6 +68,7 @@ function Form(props) {
                         <input type="text" name="interestRate" id="interestRate" className="border-none text-[#2c414c] text-xl px-4 h-full w-full"/>
                         <i className="bi bi-percent p-2 md:p-1 text-2xl text-[#5c747e] bg-[#e3f4fe] w-12 h-full"></i>
                     </div>
+                    {interestRateError && <small className="text-red-500">{interestRateError}</small>}
                 </div>
             </div>
             <div>
