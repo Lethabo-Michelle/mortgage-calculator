@@ -76,7 +76,7 @@ function Form(props) {
             <div>
                 <label htmlFor="mortgageType" className="text-lg text-gray-500">Mortgage Type</label>
                 <div className="border-1 border-gray-400 h-12 md:h-10 rounded-lg my-2 flex gap-2 items-center px-4">
-                    <input type="radio" value="repayment" name="mortgageType" id="repayment" className="w-4 h-4 "/>
+                    <input type="radio" value="repayment" defaultChecked={true} name="mortgageType" id="repayment" className="w-4 h-4 "/>
                     <label htmlFor="interestOnly" className="text-lg font-medium text-[#2c414c]">Repayment</label>
                 </div>
                 <div className="border-1 border-gray-400 h-12 md:h-10  rounded-lg  mb-6 flex gap-2 items-center px-4">

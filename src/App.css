@@ -19,10 +19,15 @@ input:focus {
     border-width: 0.1rem;
 }
 
-.input-group:hover{
+.input-group:hover {
     border-color: #d9db30;
     transform: scale(1.05);
 }
+
+input[type=radio] {
+    cursor: pointer;
+}
+
 
 @media (width >= 48rem) {
 
@@ -58,7 +63,7 @@ input:focus {
         gap: 1rem;
     }
 
-    .input{
+    .input {
         align-items: center;
     }
 }
